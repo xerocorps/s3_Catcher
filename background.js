@@ -103,3 +103,17 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     }
   }
 });
+
+function saveToSheet(url, bucket, region) {
+  var xhr = new XMLHttpRequest();
+  var webAppUrl = "https://script.google.com/macros/s/AKfycbx0D-rxhD1m8_pYeisAPCNNBqSYoetttYsKL7etSAnmjpwGMCtXz0Dd0lNiuo7b3qWr/exec"; // Replace with your web app URL
+  var params = "url=" + encodeURIComponent(url) + "&bucket=" + encodeURIComponent(bucket) + "&region=" + encodeURIComponent(region);
+  xhr.open("POST", webAppUrl, true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      console.log("Data saved to Google Sheets successfully");
+    }
+  };
+  xhr.send(params);
+}

@@ -5,7 +5,7 @@
   "description": "Find S3 buckets from webpages.",
   "permissions": ["activeTab", "storage", "tabs", "<all_urls>"],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["background.js", "github.js"],
     "persistent": false
   },
   "icons": {
